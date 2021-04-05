@@ -41,7 +41,7 @@ public class NoteAdaptor extends RecyclerView.Adapter<NoteAdaptor.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         if (list != null) {
             NoteEntity noteEntity = list.get( position );
-            holder.setData( noteEntity.getNote(), position );
+            holder.textView.setText( noteEntity.getNote() );
         } else {
             holder.textView.setText( "Data is not there" );
         }
@@ -55,7 +55,7 @@ public class NoteAdaptor extends RecyclerView.Adapter<NoteAdaptor.ViewHolder> {
             }
         } );
 
-        holder.imageUpdate.setOnClickListener( new View.OnClickListener() {
+        holder.delete.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onDeleteClickListener != null){
@@ -84,18 +84,13 @@ public class NoteAdaptor extends RecyclerView.Adapter<NoteAdaptor.ViewHolder> {
 
         TextView textView;
         int mPosition;
-        ImageView imageEdit, imageUpdate;
+        ImageView imageEdit, delete;
 
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
             textView = itemView.findViewById( R.id.noteText );
             imageEdit = itemView.findViewById( R.id.editUpdate );
-            imageUpdate = itemView.findViewById( R.id.editText );
-        }
-
-        public void setData(String note, int position) {
-            textView.setText( note );
-            mPosition = position;
+            delete = itemView.findViewById( R.id.delete );
         }
     }
 }

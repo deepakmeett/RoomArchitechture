@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity implements NoteAdaptor.OnDel
         setContentView( R.layout.activity_main );
         button = findViewById( R.id.buttonPanel );
         recyclerView = findViewById( R.id.recycler );
+        
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
         noteAdaptor = new NoteAdaptor( this, this );
         recyclerView.setAdapter( noteAdaptor );
+        
         model = ViewModelProviders.of( this ).get( NoteViewModel.class );
         model.getAllListData().observe( this, new Observer<List<NoteEntity>>() {
             @Override

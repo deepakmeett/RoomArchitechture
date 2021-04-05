@@ -16,11 +16,11 @@ public interface NoteDoa {
     
     //It will return the list of LiveData
     // This is being used to show data in RecylerView.
-    @Query( "SELECT * FROM NoteEntity" )
+    @Query( "SELECT * FROM notes" )
     LiveData<List<NoteEntity>> getAllNotes();
     
     //This is for like if click on edit button then it will take data from that CardView
-    @Query( "SELECT * FROM NoteEntity WHERE id=:noteId" )
+    @Query( "SELECT * FROM notes WHERE id=:noteId" )
     LiveData<NoteEntity> getNote(String noteId);
     
     @Update
